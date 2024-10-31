@@ -1,0 +1,52 @@
+/* CounterPage.css */
+.counter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2em;
+}
+
+.circle {
+    position: relative;
+    width: 200px; /* Ancho del círculo */
+    height: 200px; /* Alto del círculo */
+    border: 10px solid #3498db; /* Color del borde */
+    border-radius: 50%; /* Hacer que sea un círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Para asegurar que el overlay no se salga */
+}
+
+.count {
+    font-size: 4em; /* Tamaño del número */
+    color: #3498db; /* Color del número */
+    position: absolute;
+}
+
+.circle-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(52, 152, 219, 0.3); /* Color de fondo */
+    clip-path: circle(50%);
+    animation: countdown 10s linear forwards; /* Animación para completar el círculo */
+}
+
+/* Animación para el círculo */
+@keyframes countdown {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+.form-display {
+    text-align: center;
+}

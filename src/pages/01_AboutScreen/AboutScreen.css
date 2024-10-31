@@ -1,0 +1,13 @@
+p{  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    margin-top: 130px;
+    text-align: justify;
+}
+.container{
+    max-width: 800px;             /* Opcional: define un ancho máximo */
+    line-height: 1.6;
+}

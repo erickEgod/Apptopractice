@@ -1,0 +1,75 @@
+1) crear el proyecto con:
+	- npm create vite
+
+2) Eliminar todo excepto main.jsx
+
+3) INSTALAR DEPENDENCIAS:
+	- bootstrap: con cdn en el index.html
+	- MUI (material ui): npm install @mui/material @emotion/react @emotion/styled
+	- MUI icons: npm  install @mui/icons-material
+	- Router (navegar entre páginas navBar): npm install react-router-dom
+
+4) PARA EL CSS usaremos el de sergiecode base-estilos-carrito-react
+
+para el favicon creamos un link:favicon en el index.html
+
+5) Creamos la carpeta components donde tendremos todos lo componentes por separado.
+
+6) Creamos el archivo NavBar.jsx donde crearemos la navbar para navegar entre las páginas y lo importamos en el CarritoApp.jsx que es la principal.
+- Para el ícono de carrito con el número encima debemos usar un BADGE de MUI para esto se debe copiar y pegar el código desde la página y no olvidar importar cada componente.
+
+7) Usaremos el ROUTER (detallados en hooksApp/Pasos para router dom navbar):
+	- Todo viene de react-router-dom
+	- En el main.jsx envolvemos a la app con <BrowserRouter>...</BrowserRouter>.
+	- Creamos cada página (screens) en una carpeta "pages".
+	- En el CarritoApp.jsx debajo del NavBar debemos usar rutas para manejar de 	manera correcta:
+		<Routes>
+			<Route path="/ruta" element={<Component></Component>}></Route>
+			...
+			<Route path="/*" element={<Navigate to="/"></Navigate>}></Route>
+		</Routes>
+	- En el NavBar debemos reemplazar los <a>(links) o <button> por <NavLink>		</NavLink> para que funcionen con el router-dom y le ponemos la ruta a cada uno 	con to="/ruta". (En el caso de los componentes importados de MUI debemos 	encerrarlos en un NavLink también)
+	
+
+9) En la page ComprasScreen vamos a poner todos los productos, (VAMOS A USAR UNA API https://fakestoreapi.com/).
+	- Llamamos con un fecth a la API para obtener los productos.
+	- Usamos un useEffect para que al abrir la página se carguen los productos una 	sola vez.
+	- Para hacer más limpio el código creamos un Component Cards (será donde se 	cargue cada producto, con descripción y foto).
+	- cargamos el css en cards.
+	- En cards también ponemos un condicional con un useState para que el botón 	cambie de agregar a quitar cuando se haya seleccionado (después manejamos esa 	lógica).
+	
+10) En la page CarritoPage vamos a traer una tabla con todo lo que vamos a tener en el carrito.
+	- Hacemos una tabla desde bootstrap.
+
+11) Vamos a usar useContext para tener la información en todos los children: (más detallado en hooksAPP/src/components/Z_NAVBAR/context.txt):
+	- creamos una carpeta Contexts y un archivo ProductsContext y exportamos el 	nombre = createContext();
+	- creamos un ProductsProvider y hacemos un rafc y le enviamos un {children}, acá 	ponemos el fetch a la api 	de los productos para que esté en toda la app 	(obviamente la borramos de 	ComprasScreen). 
+		retornamos:
+		<ProductsContext.Provider value={{products}}>
+        		{children}
+    		</ProductsContext.Provider>
+	- Al padre lo envolvemos con <ProductProvider>..</ProductProvider>
+	- Donde queremos usar (ComprasScreen) debemos desestructurar lo que trae el 	context con:
+		const {products} = useContext(ProductsContext);
+
+12) Creamos otro Context para guardar lo que se agregó o quitó del carrito y poder tenerlo en la página de CarritoPage. También vamos a usar un useReducer:
+	1) Creamos un reducer para agregar o quitar producto y aumentar o disminuir 	cantidad.
+	2) Realizamos la lógica, con los actions y enviando los payloads necesarios.
+	3) Manejamos este reducer con el botón de agregar/eliminar producto.
+	4) Creamos 3 btn (+ cantidad -) y de igual manera con estos manejamos el reducer
+	
+13) Agregamos una fila en la tabla que sume todo usando un .reduce.
+
+14) Hacemos que el btn de "Comprar" haga algo (en este caso que imprima la pantalla). con un print() y usamos la propiedad disable para que no se pueda presionar mientras no haya nada en el carrito.
+
+15) Hacemos que el ícono del carrito muestre los número según la lista de compras.
+	- en el nav también usamos el useContext para traer toda la lista.
+	- enviamos en el badge el productsState.length
+
+
+
+
+
+
+
+

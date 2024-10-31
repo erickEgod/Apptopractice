@@ -1,0 +1,35 @@
+.titulo-decorate{
+    margin-left: 50px;
+    font-size: 25px;
+}
+
+.navbar {
+    position: fixed; /* Mantiene la navbar fija en la parte superior */
+    top: 0; /* Alinea la navbar en la parte superior */
+    left: 0; /* Alinea la navbar en el lado izquierdo */
+    right: 0; /* Alinea la navbar en el lado derecho */
+    z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Agrega una sombra opcional */
+}
+.brand-margin {
+    margin-left: 320px; /* Ajusta este valor según lo que necesites */
+    font-size: 17px;
+  }
+img{
+    margin-right: 5px;
+    width: 37px;
+}
+
+.ingresar{
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgb(120, 202, 147);
+    border-radius: 30px;
+}
+.registrar{
+    font-size: 16px;
+}
